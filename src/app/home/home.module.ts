@@ -13,7 +13,7 @@ import {JwtInterceptor} from '../interceptors/jwt.interceptor';
     CommonModule,
     HomeRoutingModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }]
+  providers: [/*{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }*/]
 
 })
 export class HomeModule { }

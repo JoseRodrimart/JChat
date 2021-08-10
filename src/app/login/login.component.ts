@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   logeaUsuario(login: UserLoginRequest): void {
     this.loginService.logUser(login).subscribe((userLoginInfo: UserLoginResponse) => {
       console.log(userLoginInfo);
-      // this.jwtTokenService.setToken(userLoginInfo.token);
+      this.jwtTokenService.setToken(userLoginInfo.token);
       this.route.navigate(['home']);
     });
     // this.socketService.sendMessage(JSON.stringify({usuarioID: 'jose', mensaje: 'mensaje'}));
