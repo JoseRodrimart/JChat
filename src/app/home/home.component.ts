@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.client.onConnect = (frame: IFrame) => {
 
-      this.client.subscribe('/topic/messages', (message: IMessage) => {
+      this.client.subscribe('/broker/mensajes/1', (message: IMessage) => {
         if (message.body) {
           console.log('got message with body ' + message.body);
         } else {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       }, {});
 
-      this.client.publish({destination: '/app/status', headers: {}, body: 'Hello, STOMP'});
+      this.client.publish({destination: '/app/grupos/1', headers: {}, body: 'Hello, STOMP'});
 
     };
 
