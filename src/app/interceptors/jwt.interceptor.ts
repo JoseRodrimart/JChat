@@ -17,8 +17,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.localStorage.get('token');
-    console.log(token);
-    if (request.url !== 'http://localhost:8080/auth/login'){
+    if (!request.url.endsWith('/auth/login')) {
       request = request.clone({
         url:  request.url,
         setHeaders: {
