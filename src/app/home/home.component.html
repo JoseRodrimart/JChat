@@ -1,10 +1,33 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Not Telegram</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>search</mat-icon>
-  </button>
-</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <app-chat-sidenav [welcomeUser]="welcomeUser"></app-chat-sidenav>
+  </mat-drawer>
+
+  <div class="row h-100 m-0 overflow-hidden">
+      <div class="col-12 p-0">
+        <mat-toolbar color="primary" class="toolbar">
+          <button mat-icon-button type="button" (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span>Not Telegram</span>
+          <span class="example-spacer"></span>
+          <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-toolbar>
+      </div>
+      <div class="col-2 h-100 p-0" style="background-color: rgb(63,81,181)">
+        <app-user-grid></app-user-grid>
+      </div>
+      <div class="col-10 h-100" style="background-color: rgb(25,37,106)">
+        <div class="row h-75 flex-column justify-content-between align-items-stretch">
+          <div class="col">Chat Con X persona</div>
+
+          <div class="col">Mensajes</div>
+          <div class="col"> Input chat </div>
+        </div>
+      </div>
+    </div>
+
+
+</mat-drawer-container>

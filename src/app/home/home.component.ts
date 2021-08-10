@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   welcomeUser?: GetUsuarioDTO;
 
+  showFiller = false;
+
   private client!: Client;
 
   constructor(private readonly homeService: HomeService) {}
