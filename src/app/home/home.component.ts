@@ -10,8 +10,9 @@ import {GetUsuarioDTO} from '../interface/get-usuario-dto';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  title = 'JChat';
   url = 'ws://localhost:8080/chat';
+
+  welcomeUser?: GetUsuarioDTO;
 
   private client!: Client;
 
@@ -21,21 +22,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.client = Stomp.client(this.url);
 
     this.client.onConnect = (frame: IFrame) => {
-      console.log('Conectados: ' + this.client.connected + ' : ' + frame);
+
       this.client.subscribe('/topic/messages', (message: IMessage) => {
         if (message.body) {
-          alert('got message with body ' + message.body);
+          console.log('got message with body ' + message.body);
         } else {
-          alert('got empty message');
+          console.log('got empty message');
         }
       }, {});
+
       this.client.publish({destination: '/app/status', headers: {}, body: 'Hello, STOMP'});
+
     };
 
     this.client.activate();
 
-    this.homeService.getDatosUsuario().subscribe((getUsuarioDTO: GetUsuarioDTO)=>{
-      console.log(getUsuarioDTO);
+    this.homeService.getDatosUsuario().subscribe((userData: GetUsuarioDTO) => {
+      this.welcomeUser = userData;
     });
 
   }

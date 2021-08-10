@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div class="container mt-4">
+  <p class="lead font-weight-bold text-primary">{{welcomeUser?.nombre}}</p>
+
+  <p class="lead text-primary">{{welcomeUser?.mail}}</p>
+
+  <img class="img-fluid" [src]="welcomeUser?.imagen" alt="img">
+
+  <p class="lead font-weight-bold">
+    Roles
+    <span *ngFor="let role of welcomeUser?.roles" class="lead text-primary"> {{role}}</span>
+  </p>
+</div>

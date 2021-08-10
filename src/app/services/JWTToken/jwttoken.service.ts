@@ -18,7 +18,8 @@ export class JWTTokenService {
   setToken(token: string): void{
     if (token) {
       this.jwtToken = token;
-      localStorage.setItem('token', token);
+      console.log('Storing token: ' + token);
+      this.localStorage.set('token', token);
     }
   }
 
