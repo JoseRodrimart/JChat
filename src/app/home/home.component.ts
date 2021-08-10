@@ -1,5 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Client, IFrame, IMessage, Stomp} from '@stomp/stompjs';
+import {HomeService} from './servicios/home.service';
+import {GetUsuarioDTO} from '../interface/get-usuario-dto';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private client!: Client;
 
-  constructor() {}
+  constructor(private readonly homeService: HomeService) {}
 
   ngOnInit(): void {
     this.client = Stomp.client(this.url);
@@ -31,6 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     };
 
     this.client.activate();
+
+    this.homeService.getDatosUsuario().subscribe((getUsuarioDTO: GetUsuarioDTO)=>{
+      console.log(getUsuarioDTO);
+    });
 
   }
 

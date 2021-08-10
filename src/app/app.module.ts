@@ -7,12 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import {HomeModule} from './home/home.module';
+import {JwtInterceptor} from './interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {HomeModule} from './home/home.module';
     MatIconModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [/*{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
