@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Client, IFrame, IMessage, Stomp} from '@stomp/stompjs';
 import {HomeService} from './servicios/home.service';
 import {GetUsuarioDTO} from '../interface/get-usuario-dto';
+import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +19,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   showFiller = false;
 
   private client!: Client;
+  isHandset: Observable<BreakpointState> = this.observer.observe(Breakpoints.Handset);
 
-  constructor(private readonly homeService: HomeService) {}
+
+  constructor(private readonly homeService: HomeService, private observer: BreakpointObserver) {}
 
   ngOnInit(): void {
     this.client = Stomp.client(this.url);

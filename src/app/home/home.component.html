@@ -1,33 +1,79 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="over">
-    <app-chat-sidenav [welcomeUser]="welcomeUser"></app-chat-sidenav>
-  </mat-drawer>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    >
+    <mat-toolbar color="primary" class="d-flex justify-content-between">
+      Jona er porche
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      Cosas
+    </mat-nav-list>
+  </mat-sidenav>
 
-  <div class="row h-100 m-0 overflow-hidden">
-      <div class="col-12 p-0">
-        <mat-toolbar color="primary" class="toolbar">
-          <button mat-icon-button type="button" (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span>Not Telegram</span>
-          <span class="example-spacer"></span>
-          <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>search</mat-icon>
-          </button>
-        </mat-toolbar>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar class="d-flex justify-content-between" color="primary">
+      <div class="d-flex justify-content-center align-items-center">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      Not Telegram
       </div>
+
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="d-flex flex-grow-1">
       <div class="col-2 h-100 p-0" style="background-color: rgb(63,81,181)">
         <app-user-grid></app-user-grid>
       </div>
-      <div class="col-10 h-100" style="background-color: rgb(25,37,106)">
-        <div class="row h-75 flex-column justify-content-between align-items-stretch">
-          <div class="col">Chat Con X persona</div>
-
-          <div class="col">Mensajes</div>
-          <div class="col"> Input chat </div>
+      <div class="d-flex flex-column flex-grow-1">
+        <div class="contenido-chat">
+          <mat-list>
+            <mat-list-item class="my-2">
+              <div class="user-message-inc d-flex flex-column">
+                <p class="user-message-name font-weight-bold m-0 text-dark" style="font-size: xx-small">Josetxo</p>
+                <p class="user-message m-0  lead" style="font-size: smaller">Pepper</p>
+              </div>
+            </mat-list-item>
+            <mat-list-item class="my-2">
+              <div class="user-message-inc d-flex flex-column">
+                <p class="user-message-name font-weight-bold m-0 text-dark" style="font-size: xx-small">Usurio</p>
+                <p class="user-message m-0  lead" style="font-size: smaller"> Salt </p>
+              </div>
+            </mat-list-item>
+            <mat-list-item class="my-2">
+              <div class="user-message-inc d-flex flex-column">
+                <p class="user-message-name font-weight-bold m-0 text-dark" style="font-size: xx-small">Toalla</p>
+                <p class="user-message m-0  lead" style="font-size: smaller">simio tirillas vas a dejar de enderezar platanos con el culo marikon </p>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="messages d-flex justify-content-center align-items-center">
+          <button mat-icon-button>
+            <mat-icon>gif</mat-icon>
+          </button>
+          <mat-form-field class="full-width" appearance="outline" style="padding-bottom: 0;">
+            <input matInput >
+          </mat-form-field>
+          <button mat-icon-button>
+            <mat-icon>attachment</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>keyboard_voice</mat-icon>
+          </button>
+          <button mat-icon-button class="m-2" color="accent">
+            <mat-icon>send</mat-icon>
+          </button>
         </div>
       </div>
     </div>
-
-
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
