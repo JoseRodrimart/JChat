@@ -1,5 +1,10 @@
-<div *ngFor="let user of allUsers" class="p-0">
+<div *ngFor="let user of allUsers; let i = index" class="p-0">
   <mat-action-list>
-    <button mat-list-item> {{user?.username}} </button>
+    <mat-list-item>
+        <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{i+1}}.png' alt="avatar" class="avatar"/>
+    <a> {{user?.username}} </a>
+    </mat-list-item>
   </mat-action-list>
 </div>
+
+
